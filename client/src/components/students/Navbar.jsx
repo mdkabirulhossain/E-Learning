@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const { openSignIn } = useClerk()
     const { user } = useUser()
-    const {navigate} = useContext(AppContext)
+    const {navigate, isEducator} = useContext(AppContext)
     return (
         <div className={`flex justify-between items-center px-4 sm:px-10 md:px-14 lg:px-36 border-b border-gray-500 py-4 ${isCourseListPage ? 'bg-white' : 'bg-cyan-100/70'}`}>
             <img onClick={()=> navigate('/')} src={assets.logo1} alt="logo" className='w-28 lg:w-32 cursor-pointer' />
@@ -20,7 +20,7 @@ const Navbar = () => {
                     {
                         user &&
                         <>
-                            <button>Become Educator</button>
+                            <button onClick={()=>{navigate('/educator')}}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
                             |<Link to='/my-enrollments'>My Enrollments</Link>
                         </>
                     }
@@ -41,7 +41,7 @@ const Navbar = () => {
                     {
                         user &&
                         <>
-                            <button>Become Educator</button>
+                             <button onClick={()=>{navigate('/educator')}}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
                             | <Link to='/my-enrollments'>My Enrollments</Link>
                         </>
                     }
