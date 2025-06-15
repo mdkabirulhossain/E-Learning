@@ -15,15 +15,33 @@ export const AppContextProvider = (props) =>{
     const fetchAllCourses = async()=>{
         setAllCourses(dummyCourses);
     }
+    
+    //Function to calculate average reating of course
+    const calculateRating = (course) =>{
+        if(course.courseRatings.length === 0){
+            return 0;
+        }
+        
+        let totalRating = 0;
+        course.courseRatings.forEach(rating =>{
+            totalRating += rating.rating
+        })
 
+        return totalRating / course.courseRatings.length
+    }
     useEffect(()=>{
         fetchAllCourses()
     },[])
+
+    // useEffect(()=>{
+    //     calculateRating()
+    // },[])
 
     const value = {
         currency,
         allCourses,
         navigate,
+        calculateRating
     }
     
     return(
