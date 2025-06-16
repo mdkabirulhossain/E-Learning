@@ -48,7 +48,7 @@ const Navbar = () => {
                 </div>
                 {
                     user ? <UserButton /> :
-                    <button> <img src={assets.user_icon} alt="user Icon" srcset="" /> </button>
+                    <button> <img src={assets.user_icon} alt="user Icon" /> </button>
                 }
             </div>
         </div>
