@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import SearchBar from '../../components/students/SearchBar';
 import CourseCard from '../../components/students/CourseCard';
 import { assets } from '../../assets/assets';
+import Footer from '../../components/students/Footer';
 
 const CoursesList = () => {
 
@@ -47,6 +48,7 @@ const CoursesList = () => {
                     }
                 </div>
             </div>
+             <Footer />
         </>
     );
 };
