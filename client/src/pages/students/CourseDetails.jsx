@@ -5,6 +5,7 @@ import Loading from '../../components/students/Loading';
 import { assets } from '../../assets/assets';
 import humanizeDuration from 'humanize-duration';
 import Footer from '../../components/students/Footer';
+import YouTube from 'react-youtube'
 
 const CourseDetails = () => {
 
@@ -12,6 +13,7 @@ const CourseDetails = () => {
     const [courseData, setCourseData] = useState(null)
     const [openSections, setOpenSections] = useState({})
     const [isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false)
+    const [playerData, setPlayerData] = useState(null)
     const { allCourses, calculateRating, calculateChapterTime, calculateCourseDuration, calculateNoOfLectures, currency } = useContext(AppContext)
 
     const fetchCourseData = async () => {
@@ -91,7 +93,9 @@ const CourseDetails = () => {
                                                     <div className='flex items-center justify-between w-full text-gray-800 text-xs md:text-default mt-1'>
                                                         <p>{lecture.lectureTitle}</p>
                                                         <div className='flex gap-2'>
-                                                            {lecture.isPreviewFree && <p className='text-blue-500 cursor-pointer'>Preview</p>}
+                                                            {lecture.isPreviewFree && <p onClick={()=>setPlayerData({
+                                                                videoId: lecture.lectureUrl.split('/').pop()
+                                                            })} className='text-blue-500 cursor-pointer'>Preview</p>}
                                                             <p>{humanizeDuration(lecture.lectureDuration * 60 * 1000, { units: ['h', 'm'] })}</p>
                                                         </div>
                                                     </div>
@@ -110,10 +114,20 @@ const CourseDetails = () => {
 
                 {/* Right column  */}
                 <div className='max-w-[424px] z-10 shadow-[0px_4px_15px_2px_rgba(0,0,0,0.1)] rounded-t md:rounded-none overflow-hidden  bg-white  sm:min-w-[420px]'>
-                    <img src={courseData?.courseThumbnail} alt="thumbnil" />
+                    
+                    {
+                        playerData ?
+                        <YouTube videoId={playerData.videoId} opts={{playerVars:{autoplay: 1}}} iframeClassName='w-full aspect-video'/> 
+                       :
+                       <img src={courseData?.courseThumbnail} alt="thumbnil" />
+                    }
+                    
                     <div className='p-5'>
                         <div className='flex items-center gap-2'>
-                            <img className='w-3.5' src={assets.time_left_clock_icon} alt="time left clock" />
+                           
+                                <img className='w-3.5' src={assets.time_left_clock_icon} alt="time left clock" />
+                            
+                            
                             <p className='text-red-500'><span className='font-medium'>5 days</span>left at this price!</p>
                         </div>
                         <div className='flex gap-3 items-center pt-2'>
