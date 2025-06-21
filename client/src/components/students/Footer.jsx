@@ -9,16 +9,16 @@ const Footer = () => {
                     <img src={assets.logo1} alt="logo" className='w-28 lg:w-32'/>
                     <p className='mt-6 text-center md:text-left text-sm text-white/80'>Gain knowledge on any topic, at your convenience, from any location.</p>
                 </div>
-                <div className='flex flex-col md:items-start items-center w-f'>
+                <div className='flex flex-col md:items-start items-center w-full'>
                     <h2 className='font-semibold text-white mb-5'>Company</h2>
-                    <ul className='flex md:flex-col w-full justify-between text-sm text-white/80 md:space-y-2'>
+                    <ul className='flex flex-col w-full items-center md:items-start text-sm text-white/80 md:space-y-2'>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">About us</a></li>
                         <li><a href="#">Contact us</a></li>
                         <li><a href="#">Privacy policy</a></li>
                     </ul>
                 </div>
-                <div className='hidden md:flex flex-col items-start w-full'>
+                <div className='md:flex flex-col items-start w-full '>
                     <h2 className='font-semibold text-white mb-5'>Subscribe to our newsletter</h2>
                     <p className='text-sm text-white/80'>The lates news, articles, and resources, sent to your inbox weekly.</p>
                     <div className='flex items-center gap-2 pt-4'>
