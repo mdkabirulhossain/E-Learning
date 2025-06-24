@@ -3,6 +3,8 @@ import { AppContext } from '../../context/AppContext';
 import { useParams } from 'react-router-dom';
 import { assets } from '../../assets/assets';
 import humanizeDuration from 'humanize-duration'
+import YouTube from 'react-youtube';
+import Footer from '../../components/students/Footer';
 
 const Player = () => {
 
@@ -35,7 +37,7 @@ const Player = () => {
 
     return (
         <>
-            <div className='p-4 sm:p-10 flex flex-col-reverse md:grid md:grid-cols-2 gpa-10 md:px-36'>
+            <div className='p-4 sm:p-10 flex flex-col-reverse md:grid md:grid-cols-2 gap-10 md:px-36'>
                 {/* left column  */}
                 <div className='text-gray-800'>
                     <h2 className='text-xl font-semibold'>Course Structure</h2>
@@ -71,10 +73,25 @@ const Player = () => {
                     </div>
                 </div>
                 {/* right column  */}
-                <div>
-
+                <div className='md:mt-10'>
+                    {
+                        playerData ? (
+                            <div >
+                                <YouTube videoId={playerData.lectureUrl.split('/').pop()} iframeClassName='w-full aspect-video'/>
+                                <div className='flex justify-between items-center mt-1'>
+                                    <p>{playerData.chapter}{playerData.lecture} {playerData.lectureTitle}</p>
+                                    <button className='text-blue-600'>{false ? 'Completed' : "Mark Complete"}</button>
+                                </div>
+                            </div>
+                            
+                        )
+                        :
+                         <img src={courseData ? courseData?.courseThumbnail : null} alt="thumbnail" />
+                    }
+                   
                 </div>
             </div>
+            <Footer></Footer>
         </>
 
     );
