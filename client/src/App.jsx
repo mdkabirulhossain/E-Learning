@@ -13,6 +13,7 @@ import StudentEnrolled from './pages/educators/StudentEnrolled'
 
 import './App.css'
 import Navbar from './components/students/Navbar'
+import "quill/dist/quill.snow.css";
 
 
 function App() {
