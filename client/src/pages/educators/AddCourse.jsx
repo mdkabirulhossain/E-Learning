@@ -89,6 +89,10 @@ const AddCourse = () => {
         })
     }
 
+    const handleSubmit = async(e) =>{
+        e.preventDefault();
+    }
+
     useEffect(() => {
         // Initiate quill only once
         if (!quillRef.current && editorRef.current) {
@@ -99,7 +103,7 @@ const AddCourse = () => {
     }, [])
     return (
         <div className='h-screen overflow-scroll flex flex-col items-start justify-between md:p-8 md:pb-0 p-4 pt-8 pb-0'>
-            <form className='flex flex-col gap-4 max-w-md w-full text-gray-500'>
+            <form onSubmit={handleSubmit} className='flex flex-col gap-4 max-w-md w-full text-gray-500'>
                 <div className='flex flex-col gap-1'>
                     <p>Course Title</p>
                     <input onChange={(e) => setCourseTitle(e.target.value)} value={courseTitle} type="text" placeholder='Type here'
@@ -152,7 +156,7 @@ const AddCourse = () => {
                                                             target="_blank" className='text-blue-500'>Link</a> - {lecture.isPreviewFree ?
                                                                 'Free Preview' : 'Paid'}</span>
                                                         <img src={assets.cross_icon} alt="" className='cursor-pointer'
-                                                            onClick={() => handleLecture('remove', chapter.chapterId, lectureIndex)} />
+                                                            onClick={() => handleLecture('remove', chapter.chapterId, index)} />
                                                     </div>
                                                 ))
                                             }
@@ -207,7 +211,7 @@ const AddCourse = () => {
                                             onChange={(e) => setLectureDetails({ ...lectureDetails, isPreviewFree: e.target.value })}
                                         />
                                     </div>
-                                    <button type='button' className='w-full bg-blue-400 text-white px-4 py-2 rounded'>Add</button>
+                                    <button onClick={addLecture} type='button' className='w-full bg-blue-400 text-white px-4 py-2 rounded cursor-pointer'>Add</button>
                                     <img onClick={() => setShowPopup(false)} src={assets.cross_icon} className='absolute top-4 right-4 w-4 cursor-pointer' alt="" />
                                 </div>
 
@@ -215,7 +219,7 @@ const AddCourse = () => {
                         )
                     }
                 </div>
-                <button type='submit' className='bg-black text-white w-max px-8 py-2.5 my-4 rounded'>ADD</button>
+                <button  type='submit' className='bg-black text-white w-max px-8 py-2.5 my-4 rounded'>ADD</button>
             </form>
         </div>
     );

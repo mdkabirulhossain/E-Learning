@@ -20,7 +20,7 @@ const Navbar = () => {
                     {
                         user &&
                         <>
-                            <button onClick={()=>{navigate('/educator')}}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
+                            <button className='cursor-pointer' onClick={()=>{navigate('/educator')}}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
                             |<Link to='/my-enrollments'>My Enrollments</Link>
                         </>
                     }
