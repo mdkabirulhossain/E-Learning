@@ -34,7 +34,7 @@ const StudentEnrolled = () => {
                                         {index + 1}
                                     </td>
                                     <td className='md:px-4 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate'>
-                                        <img src={student.student.imageUrl} alt="course image" className='w-9 h-9 rounded-full' />
+                                        {/* <img src={student.student.imageUrl} alt="course image" className='w-9 h-9 rounded-full' /> */}
                                         <span className='truncate '>{student.student.name}</span>
                                     </td>
                                     <td className='px-4 py-3'>
